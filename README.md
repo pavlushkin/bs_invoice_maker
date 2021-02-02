@@ -1,4 +1,11 @@
-Steps:
+# BS Monthly Report Maker
+
+## Installation
+- clone a repo
+- activate venv
+- install requirenments.txt
+
+### Prepare:
 
 1. Download a toggl report as csv
 2. Create a folder
@@ -8,14 +15,15 @@ Steps:
 6. Modify a file with variables
 7. Run script to prepare docx output
 
+### Bank
+- Go to a bank
+- Copy existing bill
+- Modify the bill using prepared text
+- Download the bill
 
-Go to a bank
-Copy existing bill
-Modify the bill using prepared text
-Download the bill
-
-Open Diadok
-Create a new package
-Upload act and bill
-Fill out form using prepared data
-Sign a package
+### Diadoc
+- Open Diadok
+- Create a new package
+- Upload act and bill
+- Fill out form using prepared data
+- Sign a package
