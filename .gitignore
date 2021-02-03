@@ -1,2 +1,7 @@
 .venv
 .idea
+settings/settings.yaml
+templates/*
+output/*
+input/*
+ __pycache__/*
