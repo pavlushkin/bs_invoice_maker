@@ -1,4 +1,5 @@
 import calendar
+from num2t4ru import num2text
 
 
 def get_context(settings, data):
@@ -28,20 +29,7 @@ def get_context(settings, data):
 
         "hour_rate": format_money(settings["hour_rate"]),
 
-        "items": [
-            {
-                "index": '1',
-                "text": "Item 1",
-                "hours": "10,4",
-                "sum": "10 400,00",
-            },
-            {
-                "index": '2',
-                "text": "Item 2",
-                "hours": "11,4",
-                "sum": "11 400,00",
-            }
-        ],
+        "items": table_items,
 
         "output_doc_name": get_document_name(data["act_date"])
     }
@@ -86,10 +74,10 @@ def get_task_list(items, hour_rate):
     for idx, item in enumerate(items):
         item_sum = calculate_sum_from_hours(item["hours"], hour_rate)
         table_item = {
-            "index": idx,
+            "index": idx + 1,
             "text": item["text"],
-            "hours": item["hours"],
-            "sum": item_sum,
+            "hours": "{:,.1f}".format(item["hours"]).replace('.', ','),
+            "sum": format_money(item_sum),
         }
         table_items.append(table_item)
         total_hours = total_hours + item["hours"]
@@ -99,7 +87,9 @@ def get_task_list(items, hour_rate):
 
 
 def get_sum_as_text(decimal):
-    return "Сумма прописью"
+    male_units = ((u'рубль', u'рубля', u'рублей'), 'm')
+    text = num2text(decimal, male_units).capitalize()
+    return f'{text} 00 копеек'
 
 
 def format_money(decimal):
@@ -118,5 +108,6 @@ def print_output_information(context):
 и мобильных приложений для платформ iOS и Android за отчетный период {context["report_period"]}""")
     print("-------------------------------------------------------------------------------------------------------")
     print(f'Акт № {context["act_num"]} от {context["act_date"]}     Сумма: {context["total_sum"]} р.')
-    print(f'Основание: ДС №{context["sup_num"]} от {context["sup_date"]} к Договору № {context["contract_num"]} от {context["contract_date"]}')
+    print(
+        f'Основание: ДС №{context["sup_num"]} от {context["sup_date"]} к Договору № {context["contract_num"]} от {context["contract_date"]}')
     print("-------------------------------------------------------------------------------------------------------")
