@@ -1,7 +1,13 @@
 .venv
 .idea
+
+# Project data folders and settings
 settings/settings.yaml
+input/input.yaml
 templates/*
 output/*
-input/input.yaml
-__pycache__/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+**/__pycache__
+*.py[cod]
