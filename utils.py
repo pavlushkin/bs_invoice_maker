@@ -45,6 +45,7 @@ def get_context(settings, data):
 
         "output_doc_name": get_document_name(data["act_date"])
     }
+    return context
 
 
 def get_month_name(month_num, genitive=True):
@@ -117,6 +118,5 @@ def print_output_information(context):
 и мобильных приложений для платформ iOS и Android за отчетный период {context["report_period"]}""")
     print("-------------------------------------------------------------------------------------------------------")
     print(f'Акт № {context["act_num"]} от {context["act_date"]}     Сумма: {context["total_sum"]} р.')
-    print(
-        f'Основание: ДС №{context["sup_num"]} от {context["sup_date"]} к Договору № {context["contract_num"]} от {context["contract_date"]}')
+    print(f'Основание: ДС №{context["sup_num"]} от {context["sup_date"]} к Договору № {context["contract_num"]} от {context["contract_date"]}')
     print("-------------------------------------------------------------------------------------------------------")

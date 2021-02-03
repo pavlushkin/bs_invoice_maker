@@ -3,5 +3,5 @@
 settings/settings.yaml
 templates/*
 output/*
-input/*
- __pycache__/*
+input/input.yaml
+__pycache__/*
